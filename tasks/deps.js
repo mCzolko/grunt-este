@@ -43,17 +43,26 @@ module.exports = function (grunt) {
          */
         root: ''
 
+        /**
+         * Path where is script executed.
+         * @type {string}
+         */
+        execDir: './'
+
       });
 
       var args = [options.depsWriterPath];
       var pythonBin = options.pythonBin;
       var prefix = options.prefix;
       var outputFile = options.outputFile;
+      
+      process.chdir options.execDir;
 
       delete options.depsWriterPath;
       delete options.pythonBin;
       delete options.prefix;
       delete options.outputFile;
+      delete options.execDir;
 
       options.output_file = outputFile;
 
